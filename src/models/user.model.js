@@ -55,6 +55,7 @@ const userSchema = new Schema({
 
 },{timestamps:true});
 
+// using save hook in pre function to save the password only if it is modified
 userSchema.pre("save",async function(next){
     if(!this.isModified("password")){
         return next()
